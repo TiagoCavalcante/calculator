@@ -3,7 +3,7 @@ using Windows.UI.Xaml.Controls;
 
 namespace Calculator.Controls
 {
-	public sealed partial class OperatorButtonControl : UserControl
+	public sealed class OperatorButtonControl : UserControl
 	{
 		// dependencies
 		public string Value

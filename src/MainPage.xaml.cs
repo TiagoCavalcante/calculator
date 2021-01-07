@@ -8,7 +8,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 
 namespace Calculator
 {
-	public sealed partial class MainPage : Page
+	public sealed class MainPage : Page
 	{
 		// default var
 		public static MainPage mainPage { get; set; }
