@@ -4,7 +4,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 
 namespace Calculator.Controls
 {
-	public sealed class NumberButtonControl : UserControl
+	public sealed partial class NumberButtonControl : UserControl
 	{
 		// dependencies
 		public string Value

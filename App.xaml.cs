@@ -7,7 +7,7 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Calculator
 {
-	sealed class App : Application
+	sealed partial class App : Application
 	{
 		public App()
 		{
