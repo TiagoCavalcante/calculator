@@ -8,17 +8,14 @@ namespace Calculator.Controls
 		// dependencies
 		public string Value
 		{
-			get { return (string)GetValue(ValueProperty); }
-			set { SetValue(ValueProperty, value); }
+			get => (string)GetValue(ValueProperty);
+			set => SetValue(ValueProperty, value);
 		}
 
 		// utils
 		public bool isNumeric(char character)
 		{
-			if (int.TryParse(character.ToString(), out _))
-				return true;
-			else
-				return false;
+			return int.TryParse(character.ToString(), out _);
 		}
 
 

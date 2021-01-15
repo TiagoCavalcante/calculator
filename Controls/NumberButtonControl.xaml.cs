@@ -9,8 +9,8 @@ namespace Calculator.Controls
 		// dependencies
 		public string Value
 		{
-			get { return (string)GetValue(ValueProperty); }
-			set { SetValue(ValueProperty, value); }
+			get => (string)GetValue(ValueProperty);
+			set => SetValue(ValueProperty, value);
 		}
 
 		public static readonly DependencyProperty ValueProperty = DependencyProperty.Register("Value", typeof(string), typeof(NumberButtonControl), null);
@@ -37,13 +37,13 @@ namespace Calculator.Controls
 				}
 				else
 				{
-					errorDisplay.Text = "The exp. can have until 50 digits.";
+					errorDisplay.Text = "The exp. can have until 50 digits";
 					FlyoutBase.ShowAttachedFlyout(primaryDisplay);
 				}
 			}
 			else
 			{
-				errorDisplay.Text = "The number can have until 6 digits.";
+				errorDisplay.Text = "The number can have until 6 digits";
 				FlyoutBase.ShowAttachedFlyout(primaryDisplay);
 			}
 		}

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using Windows.ApplicationModel.Core;
 using Windows.Foundation;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
@@ -36,6 +37,7 @@ namespace Calculator
 			// window minimum size
 			ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(256, 384));
 
+			CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = true;
 			// title bar customization
 			ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
 
@@ -61,7 +63,7 @@ namespace Calculator
 			}
 			catch
 			{
-				errorDisplay.Text = "There's an error in the exp..";
+				errorDisplay.Text = "There's an error in the exp.";
 				FlyoutBase.ShowAttachedFlyout(primaryDisplay);
 			}
 		}

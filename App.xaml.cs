@@ -17,9 +17,7 @@ namespace Calculator
 
 		protected override void OnLaunched(LaunchActivatedEventArgs e)
 		{
-			Frame rootFrame = Window.Current.Content as Frame;
-
-			if (rootFrame == null)
+			if (!(Window.Current.Content is Frame rootFrame))
 			{
 				rootFrame = new Frame();
 
@@ -44,9 +42,7 @@ namespace Calculator
 
 		private void OnSuspending(object sender, SuspendingEventArgs e)
 		{
-			var deferral = e.SuspendingOperation.GetDeferral();
-
-			deferral.Complete();
+			e.SuspendingOperation.GetDeferral().Complete();
 		}
 	}
 }
