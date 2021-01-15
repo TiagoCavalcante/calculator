@@ -12,13 +12,6 @@ namespace Calculator.Controls
 			set => SetValue(ValueProperty, value);
 		}
 
-		// utils
-		public bool isNumeric(char character)
-		{
-			return int.TryParse(character.ToString(), out _);
-		}
-
-
 		public static readonly DependencyProperty ValueProperty =
 			DependencyProperty.Register("Value", typeof(string), typeof(NumberButtonControl), null);
 
@@ -31,22 +24,7 @@ namespace Calculator.Controls
 		// handle functions
 		private void handleClick(object sender, RoutedEventArgs e)
 		{
-			TextBlock primaryDisplay = MainPage.mainPage.primaryDisplay;
-			TextBlock secondaryDisplay = MainPage.mainPage.secondaryDisplay;
-
-			if (primaryDisplay.Text.Length + secondaryDisplay.Text.Length < 50)
-			{
-				if (secondaryDisplay.Text.Length != 0)
-				{
-					if (!isNumeric(secondaryDisplay.Text[secondaryDisplay.Text.Length - 1]) && primaryDisplay.Text.Length == 0)
-						secondaryDisplay.Text = secondaryDisplay.Text.Substring(0, secondaryDisplay.Text.Length - 1) + (sender as Button).Content;
-					else
-						secondaryDisplay.Text += primaryDisplay.Text + (sender as Button).Content;
-				}
-				else if (primaryDisplay.Text.Length != 0)
-					secondaryDisplay.Text += primaryDisplay.Text + (sender as Button).Content;
-				primaryDisplay.Text = "";
-			}
+			Utils.Utils.handleOperationClick((string)(sender as Button).Content);
 		}
 	}
 }

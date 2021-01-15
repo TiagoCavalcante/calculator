@@ -32,7 +32,7 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="Calculator.App">
       <uap:VisualElements
-        DisplayName="Calculator"
+        DisplayName="calculator"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
         Description="Calculator"
