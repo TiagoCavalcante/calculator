@@ -12,51 +12,14 @@ namespace Calculator
 		// default var
 		public static MainPage mainPage { get; set; }
 
-		private void keyPress(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
-		{
-			if ((e.Key >= Windows.System.VirtualKey.Number0 && e.Key <= Windows.System.VirtualKey.Number9) || (e.Key >= Windows.System.VirtualKey.NumberPad0 && e.Key <= Windows.System.VirtualKey.NumberPad9))
-			{
-				int number;
-
-				if (e.Key >= Windows.System.VirtualKey.Number0 && e.Key <= Windows.System.VirtualKey.Number9)
-					number = e.Key - Windows.System.VirtualKey.Number0;
-				else
-					number = e.Key - Windows.System.VirtualKey.NumberPad0;
-
-				Utils.Utils.handleClick(number.ToString());
-			}
-			else if (e.Key == Windows.System.VirtualKey.Escape)
-			{
-				Utils.Utils.handleClearButtonClick();
-			}
-			else if (e.Key == Windows.System.VirtualKey.Enter)
-			{
-				Utils.Utils.handleEqualButtonClick();
-			}
-			else if (e.Key == (Windows.System.VirtualKey)111 || e.Key == (Windows.System.VirtualKey)191)
-			{
-				Utils.Utils.handleOperationClick("/");
-			}
-			else if (e.Key == (Windows.System.VirtualKey)106)
-			{
-				Utils.Utils.handleOperationClick("*");
-			}
-			else if (e.Key == (Windows.System.VirtualKey)107)
-			{
-				Utils.Utils.handleOperationClick("+");
-			}
-			else if (e.Key == (Windows.System.VirtualKey)109)
-			{
-				Utils.Utils.handleOperationClick("-");
-			}
-		}
-
 		// default functions
 		public MainPage()
 		{
 			InitializeComponent();
 
 			mainPage = this;
+
+			Window.Current.CoreWindow.CharacterReceived += keyPress;
 		}
 
 		// page functions
@@ -83,6 +46,49 @@ namespace Calculator
 		private void handleEqualButtonClick(object sender, RoutedEventArgs e)
 		{
 			Utils.Utils.handleEqualButtonClick();
+		}
+
+		private async void keyPress(CoreWindow sender, CharacterReceivedEventArgs args)
+		{
+			if ((args.KeyCode >= 48 && args.KeyCode <= 57) || (args.KeyCode >= 96 && args.KeyCode <= 105))
+			{
+				uint number;
+
+				if (args.KeyCode >= 48 && args.KeyCode <= 57)
+					number = args.KeyCode - 48;
+				else
+					number = args.KeyCode - 96;
+
+				Utils.Utils.handleClick(number.ToString());
+			}
+			else if (args.KeyCode == 27)
+			{
+				Utils.Utils.handleClearButtonClick();
+			}
+			else if (args.KeyCode == 13)
+			{
+				Utils.Utils.handleEqualButtonClick();
+			}
+			else if (args.KeyCode == '/')
+			{
+				Utils.Utils.handleOperationClick("/");
+			}
+			else if (args.KeyCode == '*')
+			{
+				Utils.Utils.handleOperationClick("*");
+			}
+			else if (args.KeyCode == '+')
+			{
+				Utils.Utils.handleOperationClick("+");
+			}
+			else if (args.KeyCode == '-')
+			{
+				Utils.Utils.handleOperationClick("-");
+			}
+			else if (args.KeyCode == 8)
+			{
+				Utils.Utils.handleBackspace();
+			}
 		}
 	}
 }

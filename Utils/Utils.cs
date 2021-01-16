@@ -98,5 +98,13 @@ namespace Calculator.Utils
 				FlyoutBase.ShowAttachedFlyout(primaryDisplay);
 			}
 		}
+
+		public static void handleBackspace()
+		{
+			TextBlock primaryDisplay = MainPage.mainPage.primaryDisplay;
+
+			if (primaryDisplay.Text.Length > 0)
+				primaryDisplay.Text = primaryDisplay.Text.Substring(0, primaryDisplay.Text.Length - 1);
+		}
 	}
 }
